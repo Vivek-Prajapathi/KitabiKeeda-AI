@@ -93,8 +93,8 @@ Use the **Courses** link in the public navigation for the regular catalog. Use *
 1. Clone the repository and enter the project folder:
 
    ```bash
-   git clone <repository-url>
-   cd KitabiKeeda
+   git clone https://github.com/Vivek-Prajapathi/KitabiKeeda-Frontend-using-AI.git
+   cd KitabiKeeda-Frontend-using-AI
    ```
 
 2. Install dependencies:
@@ -282,7 +282,13 @@ The `VITE_API_BASE_URL` value is embedded in the frontend bundle during the buil
 
 ## AI-assisted development
 
-AI development tools, including **Devin AI** and **GitHub Copilot**, were used to assist with parts of KitabiKeeda’s planning, implementation, and refinement. AI-generated suggestions and code were reviewed and integrated as part of the development process.
+This project was developed with assistance from **Devin AI** and **GitHub Copilot**:
+
+- **Devin AI** supported larger implementation tasks, including exploring the existing application, working through frontend redesign requirements, and helping refine features across the public site and LMS.
+- **GitHub Copilot** assisted with code generation and iteration while building and updating React components, styles, and project documentation.
+- AI suggestions and generated code were reviewed, tested, and integrated as part of the development workflow. The existing API contracts, authentication, authorization, and routing requirements were considered during implementation.
+
+AI tools assisted with development; they do not replace the project's authorship, review, or responsibility for the final code.
 
 ## Known integration limitations
 
