@@ -151,62 +151,147 @@ The application follows a modular frontend architecture that separates component
 
 ### Project Structure
 
+## 📁 Project Structure
+
 ```text
 KitabiKeeda/
 │
 ├── public/
-│   └── Static files and public assets
+│   ├── favicon.svg
+│   └── icons.svg
 │
 ├── src/
 │   │
 │   ├── admin/
-│   │   └── pages/
-│   │       └── Admin dashboard and management pages
+│   │   ├── components/
+│   │   ├── pages/
+│   │   │   ├── AdminAnalytics.jsx
+│   │   │   ├── AdminCoupons.jsx
+│   │   │   ├── AdminCourseForm.jsx
+│   │   │   ├── AdminCourses.jsx
+│   │   │   ├── AdminLMSAdmin.jsx
+│   │   │   ├── AdminLayout.jsx
+│   │   │   ├── AdminLayoutPage.jsx
+│   │   │   ├── AdminMarketplace.jsx
+│   │   │   ├── AdminNotifications.jsx
+│   │   │   ├── AdminOrders.jsx
+│   │   │   ├── AdminOverview.jsx
+│   │   │   └── AdminUsers.jsx
+│   │   └── styles/
 │   │
 │   ├── api/
-│   │   ├── axios.js
-│   │   ├── auth.js
-│   │   ├── course.js
-│   │   ├── lms.js
 │   │   ├── admin.js
 │   │   ├── analytics.js
+│   │   ├── auth.js
+│   │   ├── axios.js
+│   │   ├── course.js
+│   │   ├── lms.js
 │   │   └── notification.js
 │   │
 │   ├── assets/
+│   │   ├── hero.png
+│   │   ├── react.svg
+│   │   └── vite.svg
 │   │
 │   ├── components/
-│   │   └── Shared UI and route protection
+│   │   ├── CourseCard.jsx
+│   │   ├── Footer.jsx
+│   │   ├── LMSNavigation.jsx
+│   │   ├── MarketplaceCourseCard.jsx
+│   │   ├── Navbar.jsx
+│   │   └── ProtectedRoute.jsx
 │   │
 │   ├── context/
-│   │   └── Authentication context
+│   │   └── AuthContext.jsx
 │   │
 │   ├── hooks/
+│   │   └── useAuth.js
 │   │
 │   ├── layouts/
-│   │   └── Public, student and admin layouts
+│   │   ├── AdminLayout.jsx
+│   │   ├── PublicLayout.jsx
+│   │   └── UserLayout.jsx
 │   │
 │   ├── pages/
-│   │   └── Public pages, Marketplace and instructor workspace
+│   │   ├── ActivateAccount.jsx
+│   │   ├── CourseDetails.jsx
+│   │   ├── Courses.jsx
+│   │   ├── Dashboard.jsx
+│   │   ├── ForgotPassword.jsx
+│   │   ├── Home.jsx
+│   │   ├── InstructorDashboard.jsx
+│   │   ├── Login.jsx
+│   │   ├── Marketplace.jsx
+│   │   ├── Register.jsx
+│   │   └── ResetPassword.jsx
 │   │
 │   ├── profile/
-│   │   └── Student profile, orders and My Learning
+│   │   ├── MyLearning.jsx
+│   │   ├── Orders.jsx
+│   │   ├── Profile.jsx
+│   │   └── ProfileSettings.jsx
 │   │
 │   ├── routes/
-│   │   └── React Router configuration
+│   │   └── AppRoutes.jsx
 │   │
 │   ├── styles/
 │   │
+│   ├── App.css
 │   ├── App.jsx
 │   ├── index.css
-│   └── main.jsx
+│   ├── main.jsx
+│   └── KitabiKeeda-Source.zip
 │
+├── .env
 ├── .env.example
+├── .gitignore
+├── .oxlintrc.json
+├── README.md
 ├── index.html
 ├── package.json
+├── package-lock.json
 ├── postcss.config.js
 ├── tailwind.config.js
 └── vite.config.js
 ```
+
+### Folder and File Responsibilities
+
+| Folder / File | Purpose |
+|---|---|
+| `public/` | Static public assets such as icons and favicon. |
+| `src/admin/` | Admin dashboard, management pages, components, and styles. |
+| `src/api/` | API service modules and shared Axios configuration. |
+| `src/assets/` | Images and imported visual assets. |
+| `src/components/` | Reusable UI components shared across the application. |
+| `src/context/` | Global authentication state using React Context API. |
+| `src/hooks/` | Custom React hooks such as `useAuth`. |
+| `src/layouts/` | Shared layouts for public, student, and admin sections. |
+| `src/pages/` | Public website, authentication, course, Marketplace, and instructor pages. |
+| `src/profile/` | Student profile, learning, orders, and settings pages. |
+| `src/routes/` | Application routing configuration and route definitions. |
+| `src/styles/` | Additional application styles. |
+| `App.jsx` | Main application component. |
+| `App.css` | Application-level styles. |
+| `index.css` | Global styles and design system. |
+| `main.jsx` | React application entry point. |
+| `index.html` | Main HTML document loaded by Vite. |
+| `package.json` | Project dependencies and npm scripts. |
+| `package-lock.json` | Locked dependency versions. |
+| `vite.config.js` | Vite configuration. |
+| `tailwind.config.js` | Tailwind CSS configuration. |
+| `postcss.config.js` | PostCSS configuration. |
+| `.env.example` | Example environment variable configuration. |
+| `.gitignore` | Files and folders excluded from Git tracking. |
+| `.oxlintrc.json` | Oxlint configuration. |
+| `README.md` | Project documentation. |
+
+### Important Notes
+
+- `.env` contains local environment configuration and should not be committed.
+- `node_modules/` contains installed dependencies and is excluded from the documented structure.
+- `dist/` contains production build output and is generated during the build process.
+- `KitabiKeeda-Source.zip` is an archive currently present inside `src/`.
 
 ### API Service Organization
 
