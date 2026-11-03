@@ -1,17 +1,6 @@
 # 📚 KitabiKeeda – Online Learning Management Platform
 
-## 🤖 AI-Assisted Development
-
-KitabiKeeda was developed with the assistance of AI-powered development tools. AI played an important role throughout the development process, supporting code generation, debugging, problem-solving, UI development, architecture discussions, and implementation of application features.
-
-The AI tools used during development include:
-
-- **GitHub Copilot** – Code suggestions, implementation assistance, and productivity.
-- **Claude** – Problem-solving, code analysis, and development guidance.
-- **ChatGPT** – Concept explanations, debugging, code generation, and technical guidance.
-- **Devin AI** – AI-assisted software development, implementation support, and task execution.
-
-**Transparency Note:** This project is an AI-assisted development project. The tools listed above supported the development process; the resulting code, features, and application were reviewed, tested, and integrated as part of the project.
+A modern, responsive Learning Management System (LMS) built with **React 19**, designed to connect students, instructors, and administrators through a unified learning ecosystem.
 
 🌐 **Live Demo:** https://kitabi-keeda-frontend-using-ai-8yej.vercel.app/
 
@@ -530,19 +519,17 @@ For production deployments, ensure that:
 
 ## 🤖 AI-Assisted Development
 
-KitabiKeeda was developed with assistance from modern AI-powered development tools.
+KitabiKeeda was developed with the assistance of AI-powered development tools. AI played an important role throughout the development process, supporting code generation, debugging, problem-solving, UI development, architecture discussions, and implementation of application features.
 
-### Devin AI
+The AI tools used during development include:
 
-Used to assist with larger implementation tasks, exploring the existing application, frontend redesign requirements, and refining features across the public website and LMS.
+- **GitHub Copilot** – Code suggestions, implementation assistance, and productivity.
+- **Claude** – Problem-solving, code analysis, and development guidance.
+- **ChatGPT** – Concept explanations, debugging, code generation, and technical guidance.
+- **Devin AI** – AI-assisted software development, implementation support, and task execution.
 
-### GitHub Copilot
+**Transparency Note:** This project is an AI-assisted development project. The tools listed above supported the development process; the resulting code, features, and application were reviewed, tested, and integrated as part of the project.
 
-Used for code suggestions, component development, styling improvements, and documentation assistance.
-
-AI-generated suggestions and code were reviewed, tested, and integrated as part of the development process.
-
-AI tools assisted with development; they do not replace project authorship, review, or responsibility for the final implementation.
 
 ---
 
