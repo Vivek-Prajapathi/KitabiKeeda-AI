@@ -149,7 +149,6 @@ KitabiKeeda provides two separate course experiences.
 
 The application follows a modular frontend architecture that separates components, layouts, routing, authentication, API services, and feature-specific pages.
 
-### Project Structure
 
 ## 📁 Project Structure
 
