@@ -1,224 +1,206 @@
-# KitabiKeeda
+# 📚 KitabiKeeda – Online Learning Management Platform
 
-KitabiKeeda is a responsive learning platform built with React. It includes a public website and course catalog, a separate LMS Marketplace, student learning pages, an instructor workspace, and administration tools. The frontend connects to the KitabiKeeda API through shared Axios services.
+A modern, responsive Learning Management System (LMS) built with **React 19**, designed to connect students, instructors, and administrators through a unified learning ecosystem.
 
-## Contents
+🌐 **Live Demo:** https://kitabi-keeda-frontend-using-ai-8yej.vercel.app/
 
-- [Features](#features)
-- [Separate course experiences](#separate-course-experiences)
-- [Technology](#technology)
-- [Getting started](#getting-started)
-- [Environment configuration](#environment-configuration)
-- [Available scripts](#available-scripts)
-- [Routes and access](#routes-and-access)
-- [Project structure](#project-structure)
-- [API integration](#api-integration)
-- [Design system](#design-system)
-- [Deployment](#deployment)
-- [AI-assisted development](#ai-assisted-development)
-- [Known integration limitations](#known-integration-limitations)
-- [Contributing](#contributing)
+📂 **GitHub Repository:** https://github.com/Vivek-Prajapathi/KitabiKeeda-Frontend-using-AI
 
-## Features
+---
 
-### Public website
+## 📑 Table of Contents
 
-- Homepage with featured courses loaded from the public course API.
-- Responsive navigation, course discovery links, and account controls.
-- Regular public course catalog with search and category filtering.
-- Public course details with available pricing, curriculum, tags, and course information.
-- Registration, login, account activation, and password recovery/reset pages.
+- [Overview](#-overview)
+- [Key Features](#-key-features)
+- [Platform Modules](#-platform-modules)
+- [Technology Stack](#-technology-stack)
+- [Application Architecture](#-application-architecture)
+- [Getting Started](#-getting-started)
+- [Environment Configuration](#-environment-configuration)
+- [Available Scripts](#-available-scripts)
+- [Application Routes](#-application-routes)
+- [API Integration](#-api-integration)
+- [Authentication and Authorization](#-authentication-and-authorization)
+- [Design System](#-design-system)
+- [Deployment](#-deployment)
+- [AI-Assisted Development](#-ai-assisted-development)
+- [Known Limitations](#-known-limitations)
+- [Contributing](#-contributing)
+- [Developer](#-developer)
 
-### Student experience
+---
 
-- Protected student dashboard, profile, profile settings, and order history.
-- My Learning areas for My Courses, Progress, Certificates, Purchases, and Wishlist.
-- Course progress and purchase information are displayed when the API provides them.
-- Existing certificate viewing and download operations.
-- Wishlist viewing and supported add/remove actions.
+## 🚀 Overview
 
-### LMS Marketplace
+KitabiKeeda is an educational platform that provides different experiences based on user roles and learning requirements.
 
-- A dedicated LMS course catalog with API-backed search, categories, and course listings.
-- LMS-specific course details and wishlist controls.
-- My Learning, Instructor, and LMS Admin navigation links according to user permissions.
-- Separate LMS layouts and routes; Marketplace pages do not render the public Courses page.
+The platform combines:
 
-### Instructor workspace
+- A public educational website.
+- An online course catalog.
+- A dedicated LMS Marketplace.
+- Student learning dashboards.
+- Instructor workspace.
+- Administrative management tools.
 
-Instructor and admin users can access the protected instructor workspace. It uses existing LMS API operations for supported workflows, including draft course creation and editing, lesson creation, course review submission, student enrollments, analytics, and revenue data.
+The frontend communicates with the KitabiKeeda backend through centralized Axios services, supporting authentication, course management, learning activities, and role-based access control.
 
-### Administration
+---
 
-- Admin overview and existing management modules for users, regular courses, orders, coupons, notifications, analytics, and site content.
-- LMS administration for available analytics, instructors, enrollments, CSV export, and category management.
-- LMS course lifecycle management at `/admin/marketplace`.
-- Existing admin routes remain protected by role-based authorization.
+## ✨ Key Features
 
-## Separate course experiences
+### 🌐 Public Website
 
-The public catalog and the LMS Marketplace are different features and use different API services:
+- Responsive homepage with featured courses.
+- Course discovery and category-based filtering.
+- Public course catalog and detailed course information.
+- Course pricing, curriculum, and tags.
+- User registration and login.
+- Account activation.
+- Forgot password and password reset functionality.
+- Responsive navigation and account controls.
 
-| Experience | Route | Data source | Course detail route |
-|---|---|---|---|
-| Public KitabiKeeda courses | `/courses` | `courseAPI` | `/courses/:id` |
-| LMS Marketplace | `/marketplace` | `lmsAPI` | `/marketplace/:id` |
+### 🎓 Student Dashboard
 
-Use the **Courses** link in the public navigation for the regular catalog. Use **LMS Marketplace** to open the LMS catalog. LMS navigation returns to the main homepage through **Back to Site Home**.
+- Protected student dashboard.
+- Student profile and account settings.
+- My Learning section.
+- Course progress tracking.
+- Certificate viewing and downloading.
+- Purchase history.
+- Order management.
+- Wishlist viewing and management.
 
-## Technology
+### 🛍️ LMS Marketplace
 
-- React 19
-- JavaScript (ES modules)
-- Vite 8
-- React Router 7
-- Axios
-- React Context API for authentication state
-- Tailwind CSS 4 and project-specific CSS
-- Lucide React icons
-- Sonner notifications
-- Recharts for existing analytics visualizations
-- Oxlint
+- Dedicated LMS course marketplace.
+- API-driven course listings.
+- Course search and category filtering.
+- Individual LMS course details.
+- Wishlist functionality.
+- Role-based navigation.
+- Separate LMS layouts and routes.
+- Navigation between the main website and LMS Marketplace.
 
-## Getting started
+### 👨‍🏫 Instructor Workspace
 
-### Prerequisites
+- Protected instructor dashboard.
+- Draft course creation and editing.
+- Lesson creation and management.
+- Course submission for review.
+- Student enrollment information.
+- Analytics and revenue information.
 
-- Node.js `20.19+` or `22.12+`
-- npm
-- Access to a compatible KitabiKeeda backend API
+### 🛡️ Admin Dashboard
 
-### Install and run
+- Administrative overview and analytics.
+- User management.
+- Regular course management.
+- LMS course lifecycle management.
+- Instructor and enrollment management.
+- Order management.
+- Coupon management.
+- Notification management.
+- Site content management.
+- CSV export for supported LMS data.
+- Role-based access protection.
 
-1. Clone the repository and enter the project folder:
+---
 
-   ```bash
-   git clone https://github.com/Vivek-Prajapathi/KitabiKeeda-Frontend-using-AI.git
-   cd KitabiKeeda-Frontend-using-AI
-   ```
+## 🧩 Platform Modules
 
-2. Install dependencies:
+KitabiKeeda provides two separate course experiences.
 
-   ```bash
-   npm install
-   ```
-
-3. Create a local environment file:
-
-   ```bash
-   cp .env.example .env
-   ```
-
-4. Set `VITE_API_BASE_URL` in `.env` to the base URL of the backend API.
-
-5. Start the development server:
-
-   ```bash
-   npm run dev
-   ```
-
-6. Open the URL printed by Vite (by default, `http://localhost:5173`).
-
-Do not commit `.env` or other files containing secrets. Vite exposes `VITE_*` values to browser code, so these variables must not contain private credentials or tokens.
-
-## Environment configuration
-
-| Variable | Required | Description |
+| Feature | Public Course Catalog | LMS Marketplace |
 |---|---|---|
-| `VITE_API_BASE_URL` | No | Backend API base URL, including any API path prefix. If unset, the frontend uses `https://mockapi-mauve.vercel.app/api/v1`. |
+| Route | `/courses` | `/marketplace` |
+| API Service | `courseAPI` | `lmsAPI` |
+| Course Details | `/courses/:id` | `/marketplace/:id` |
+| Purpose | Regular public courses | LMS-based learning marketplace |
 
-Example:
+**Important:** The Public Course Catalog and LMS Marketplace are independent features with separate routes, API services, and layouts.
 
-```env
-VITE_API_BASE_URL=https://your-api.example.com/api/v1
-```
+- Use **Courses** to access the regular course catalog.
+- Use **LMS Marketplace** to explore LMS courses.
+- Use **Back to Site Home** to return to the main website.
 
-The backend must allow requests from the frontend origin and provide the endpoints expected by the API modules in `src/api/`.
+---
 
-## Available scripts
+## 🛠️ Technology Stack
 
-| Command | Description |
+| Technology | Purpose |
 |---|---|
-| `npm run dev` | Start the Vite development server. |
-| `npm run build` | Create the optimized production bundle in `dist/`. |
-| `npm run preview` | Serve the production bundle locally for a preview. Run `npm run build` first. |
-| `npm run lint` | Run Oxlint over the project. |
+| React 19 | Component-based UI development |
+| JavaScript | Application logic |
+| Vite 8 | Development server and build tooling |
+| React Router 7 | Client-side routing |
+| Axios | HTTP requests and API communication |
+| Context API | Global authentication state |
+| Tailwind CSS 4 | Utility-first styling |
+| Custom CSS | Component and page styling |
+| Lucide React | Icons |
+| Sonner | Toast notifications |
+| Recharts | Analytics visualizations |
+| Oxlint | Code linting |
 
-There is no test script configured in the current `package.json`.
+---
 
-## Routes and access
+## 🏗️ Application Architecture
 
-### Public website
+The application follows a modular frontend architecture that separates components, layouts, routing, authentication, API services, and feature-specific pages.
 
-| Route | Page |
-|---|---|
-| `/` | Main KitabiKeeda homepage |
-| `/courses` | Regular public course catalog |
-| `/courses/:id` | Regular public course details |
-| `/login` | Login |
-| `/register` | Registration |
-| `/activate-account` | Account activation |
-| `/forgot-password` | Password reset request |
-| `/reset-password` and `/reset-password/:token` | Password reset |
-
-### Student routes
-
-These pages require an authenticated user:
-
-| Route | Page |
-|---|---|
-| `/dashboard` | Student overview |
-| `/dashboard/profile` | Profile |
-| `/dashboard/profile/settings` | Profile settings |
-| `/dashboard/profile/my-learning` | LMS My Learning |
-| `/dashboard/orders` | Student order history |
-
-My Learning tabs can be selected with the `tab` query parameter. Supported values include `courses`, `progress`, `certificates`, `purchases`, and `wishlist`.
-
-### LMS and admin routes
-
-| Route | Page | Access |
-|---|---|---|
-| `/marketplace` | LMS Marketplace | Public |
-| `/marketplace/:id` | LMS course details | Public |
-| `/instructor` | Instructor workspace | Instructor or admin |
-| `/admin` | Admin overview | Admin |
-| `/admin/analytics` | Admin analytics | Admin |
-| `/admin/users` | User management | Admin |
-| `/admin/courses` | Regular course management | Admin |
-| `/admin/courses/create` | Create a regular course | Admin |
-| `/admin/courses/edit/:id` | Edit a regular course | Admin |
-| `/admin/marketplace` | LMS course lifecycle management | Admin |
-| `/admin/lms-admin` | LMS administration | Admin |
-| `/admin/coupons` | Coupon management | Admin |
-| `/admin/orders` | Order management | Admin |
-| `/admin/notifications` | Notifications | Admin |
-| `/admin/layout` | Site content management | Admin |
-
-Unauthenticated users are redirected to login when visiting protected routes. Users without the required role are redirected to the student dashboard.
-
-## Project structure
+### Project Structure
 
 ```text
 KitabiKeeda/
-├── public/                    # Static files and public assets
+│
+├── public/
+│   └── Static files and public assets
+│
 ├── src/
+│   │
 │   ├── admin/
-│   │   └── pages/             # Admin overview and management pages
-│   ├── api/                   # Axios API modules
-│   ├── assets/                # Imported assets
-│   ├── components/            # Shared UI, navigation, and route protection
-│   ├── context/               # Authentication context
-│   ├── hooks/                 # Shared React hooks
-│   ├── layouts/               # Public, student, and admin layouts
-│   ├── pages/                 # Public pages, Marketplace, and instructor workspace
-│   ├── profile/               # Student profile, orders, and My Learning
-│   ├── routes/                # React Router configuration
-│   ├── styles/                # Additional styles
+│   │   └── pages/
+│   │       └── Admin dashboard and management pages
+│   │
+│   ├── api/
+│   │   ├── axios.js
+│   │   ├── auth.js
+│   │   ├── course.js
+│   │   ├── lms.js
+│   │   ├── admin.js
+│   │   ├── analytics.js
+│   │   └── notification.js
+│   │
+│   ├── assets/
+│   │
+│   ├── components/
+│   │   └── Shared UI and route protection
+│   │
+│   ├── context/
+│   │   └── Authentication context
+│   │
+│   ├── hooks/
+│   │
+│   ├── layouts/
+│   │   └── Public, student and admin layouts
+│   │
+│   ├── pages/
+│   │   └── Public pages, Marketplace and instructor workspace
+│   │
+│   ├── profile/
+│   │   └── Student profile, orders and My Learning
+│   │
+│   ├── routes/
+│   │   └── React Router configuration
+│   │
+│   ├── styles/
+│   │
 │   ├── App.jsx
-│   ├── index.css              # Global design tokens and scoped page styles
-│   └── main.jsx               # Application entry point
-├── .env.example               # Environment variable template
+│   ├── index.css
+│   └── main.jsx
+│
+├── .env.example
 ├── index.html
 ├── package.json
 ├── postcss.config.js
@@ -226,87 +208,380 @@ KitabiKeeda/
 └── vite.config.js
 ```
 
-### API modules
+### API Service Organization
 
-- `src/api/axios.js` creates the shared Axios client, sets the API base URL, attaches the stored access token, and handles the existing refresh-token flow.
-- `src/api/auth.js` contains authentication operations.
-- `src/api/course.js` contains regular public and admin course operations.
-- `src/api/lms.js` contains LMS Marketplace, learning, instructor, and LMS admin operations.
-- `src/api/admin.js`, `src/api/analytics.js`, and `src/api/notification.js` contain other platform services.
+API communication is centralized inside `src/api/`.
 
-Keep network operations in these API modules and preserve the backend’s expected request and response structures when extending the app.
+| File | Responsibility |
+|---|---|
+| `axios.js` | Shared Axios instance, base URL, authentication headers and refresh-token handling |
+| `auth.js` | Authentication and account operations |
+| `course.js` | Public and admin course operations |
+| `lms.js` | LMS Marketplace, student learning and instructor operations |
+| `admin.js` | Administrative API operations |
+| `analytics.js` | Analytics-related operations |
+| `notification.js` | Notification-related operations |
 
-## API integration
+This separation keeps network requests organized and improves application maintainability.
 
-The frontend communicates with the backend through `VITE_API_BASE_URL`. When it is not configured, the API client uses the default URL described in [Environment configuration](#environment-configuration).
+---
 
-The API service modules currently group operations for:
+## ⚙️ Getting Started
 
-- Registration, account activation, login, logout, current-user lookup, profile updates, and password recovery.
-- Public course listing/details and admin course management.
-- LMS course catalog, categories, course details, search, wishlist, and payment-related API methods.
-- Student learning, progress, purchases, orders, and certificates.
-- Instructor course and lesson workflows, enrollments, analytics, and revenue.
-- LMS admin analytics, course status, instructors, enrollments, exports, and categories.
-- Admin users, orders, notifications, analytics, and site layout content.
+Follow these instructions to run KitabiKeeda locally.
 
-This repository contains the frontend. Backend availability, account provisioning, email delivery, payment provider configuration, and production data are controlled by the configured API service.
+### Prerequisites
 
-## Design system
+Make sure you have installed:
 
-The interface uses KitabiKeeda’s existing purple/violet, navy, and neutral palette. Shared CSS variables are defined in `src/index.css` and reused by the public website and LMS.
+- Node.js `20.19+` or `22.12+`
+- npm
+- Git
+- Access to a compatible KitabiKeeda backend API
 
-- Primary violet: `#6d5ce7`
-- Deep navy: `#172554`
-- Light violet surface: `#eeeafe`
-- Page background: `#f7f8fc`
-- Main text: `#172033`
-- Muted text: `#667085`
-- Border: `#e5e7eb`
+### 1. Clone the Repository
 
-LMS styling is scoped to LMS classes to avoid changing unrelated public or admin styling.
+```bash
+git clone https://github.com/Vivek-Prajapathi/KitabiKeeda-Frontend-using-AI.git
+```
 
-## Deployment
+### 2. Navigate to the Project
 
-Build the static site:
+```bash
+cd KitabiKeeda-Frontend-using-AI
+```
+
+### 3. Install Dependencies
+
+```bash
+npm install
+```
+
+### 4. Configure Environment Variables
+
+```bash
+cp .env.example .env
+```
+
+Add your backend API URL to the `.env` file.
+
+### 5. Start the Development Server
+
+```bash
+npm run dev
+```
+
+### 6. Open the Application
+
+Visit:
+
+```text
+http://localhost:5173
+```
+
+The application will now be available in your browser.
+
+---
+
+## 🔐 Environment Configuration
+
+The application uses environment variables to configure backend communication.
+
+Create a `.env` file in the project root.
+
+| Variable | Required | Description |
+|---|---|---|
+| `VITE_API_BASE_URL` | No | Backend API base URL, including the API path prefix |
+
+Example:
+
+```env
+VITE_API_BASE_URL=https://your-backend-api.example.com/api/v1
+```
+
+If this variable is not configured, the application uses the following default API endpoint:
+
+```text
+https://mockapi-mauve.vercel.app/api/v1
+```
+
+**Security Notes:**
+
+- Never commit your `.env` file.
+- Never expose private API credentials or secrets.
+- Vite exposes `VITE_` environment variables to browser-side code.
+- Ensure that the backend allows requests from your frontend origin through its CORS configuration.
+
+---
+
+## 📜 Available Scripts
+
+Run the following commands from the project directory.
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Starts the development server |
+| `npm run build` | Generates the production build |
+| `npm run preview` | Previews the production build locally |
+| `npm run lint` | Runs Oxlint to check the code |
+
+Build the application:
 
 ```bash
 npm run build
 ```
 
-The deployable output is written to `dist/`. Configure the hosting provider with `VITE_API_BASE_URL` and serve the frontend over HTTPS in production.
+The optimized production files are generated inside the `dist/` directory.
 
-Because the application uses client-side routing, configure the static host to rewrite application routes to `index.html`. The backend must also allow the deployed frontend origin through its CORS policy.
+**Note:** A test script is not currently configured in `package.json`.
 
-The `VITE_API_BASE_URL` value is embedded in the frontend bundle during the build. Set the correct value in the deployment environment before building.
+---
 
-## AI-assisted development
+## 🛣️ Application Routes
 
-This project was developed with assistance from **Devin AI** and **GitHub Copilot**:
+The application uses React Router 7 for client-side navigation and protected routes.
 
-- **Devin AI** supported larger implementation tasks, including exploring the existing application, working through frontend redesign requirements, and helping refine features across the public site and LMS.
-- **GitHub Copilot** assisted with code generation and iteration while building and updating React components, styles, and project documentation.
-- AI suggestions and generated code were reviewed, tested, and integrated as part of the development workflow. The existing API contracts, authentication, authorization, and routing requirements were considered during implementation.
+### Public Routes
 
-AI tools assisted with development; they do not replace the project's authorship, review, or responsibility for the final code.
+| Route | Description |
+|---|---|
+| `/` | Main homepage |
+| `/courses` | Public course catalog |
+| `/courses/:id` | Public course details |
+| `/login` | User login |
+| `/register` | User registration |
+| `/activate-account` | Account activation |
+| `/forgot-password` | Password recovery request |
+| `/reset-password` | Password reset |
+| `/reset-password/:token` | Token-based password reset |
 
-## Known integration limitations
+### Student Routes
 
-- The current course details interface reports that checkout is unavailable; payment API methods alone do not configure a payment provider or complete the client checkout flow.
-- Instructor course image upload and direct publishing are not exposed as supported instructor workflows in the current frontend/API integration. The instructor flow supports draft creation/editing, lesson creation, and submission for review.
-- Some purchase/order amounts or statuses may not be returned by the backend. The UI should not infer or fabricate missing values.
-- LMS analytics, course details, and administrative data depend on the configured backend and the permissions of the signed-in user.
+These routes require authentication.
 
-## Contributing
+| Route | Description |
+|---|---|
+| `/dashboard` | Student dashboard |
+| `/dashboard/profile` | Student profile |
+| `/dashboard/profile/settings` | Profile settings |
+| `/dashboard/profile/my-learning` | My Learning |
+| `/dashboard/orders` | Order history |
+
+My Learning supports the following query parameters:
+
+```text
+?tab=courses
+?tab=progress
+?tab=certificates
+?tab=purchases
+?tab=wishlist
+```
+
+### LMS and Instructor Routes
+
+| Route | Description | Access |
+|---|---|---|
+| `/marketplace` | LMS Marketplace | Public |
+| `/marketplace/:id` | LMS course details | Public |
+| `/instructor` | Instructor workspace | Instructor / Admin |
+
+### Admin Routes
+
+All the following routes require administrator access.
+
+| Route | Description |
+|---|---|
+| `/admin` | Admin overview |
+| `/admin/analytics` | Admin analytics |
+| `/admin/users` | User management |
+| `/admin/courses` | Course management |
+| `/admin/courses/create` | Create a course |
+| `/admin/courses/edit/:id` | Edit a course |
+| `/admin/marketplace` | LMS course lifecycle management |
+| `/admin/lms-admin` | LMS administration |
+| `/admin/coupons` | Coupon management |
+| `/admin/orders` | Order management |
+| `/admin/notifications` | Notification management |
+| `/admin/layout` | Site content management |
+
+---
+
+## 🔒 Authentication and Authorization
+
+KitabiKeeda implements authentication and role-based authorization to control access to protected pages.
+
+The application uses:
+
+- React Context API for shared authentication state.
+- Axios for backend communication.
+- Centralized API services.
+- Protected routes.
+- Role-based route authorization.
+- Authentication-aware navigation.
+
+### Access Control
+
+| User Role | Access |
+|---|---|
+| Public User | Public website and course catalogs |
+| Student | Student dashboard and learning features |
+| Instructor | Instructor workspace |
+| Admin | Administration modules and authorized instructor features |
+
+Unauthenticated users are redirected to the login page when accessing protected routes.
+
+Users without the required role are redirected to the student dashboard.
+
+---
+
+## 🎨 Design System
+
+KitabiKeeda uses a consistent visual identity built around violet, navy, and neutral colors.
+
+Shared design tokens are maintained in `src/index.css`.
+
+| Color | Hex Code | Usage |
+|---|---|---|
+| Primary Violet | `#6d5ce7` | Primary actions and highlights |
+| Deep Navy | `#172554` | Headings and navigation |
+| Light Violet | `#eeeafe` | Highlighted surfaces |
+| Background | `#f7f8fc` | Page backgrounds |
+| Main Text | `#172033` | Primary content |
+| Muted Text | `#667085` | Secondary content |
+| Border | `#e5e7eb` | Dividers and borders |
+
+The LMS uses scoped styling to avoid unintended changes to public website and administration components.
+
+---
+
+## 🚀 Deployment
+
+KitabiKeeda is deployed using **Vercel**.
+
+### Live Deployment
+
+**Production URL:**
+
+https://kitabi-keeda-frontend-using-ai-8yej.vercel.app/
+
+### Deployment Configuration
+
+| Setting | Value |
+|---|---|
+| Hosting Platform | Vercel |
+| Framework | Vite |
+| Build Command | `npm run build` |
+| Output Directory | `dist` |
+| Install Command | `npm install` |
+
+### Deploy Your Own Version
+
+1. Push the project to GitHub.
+2. Log in to Vercel using your GitHub account.
+3. Import the project repository.
+4. Select Vite as the framework preset.
+5. Configure the required environment variables.
+6. Configure the production build settings.
+7. Click Deploy.
+
+### React Router Configuration
+
+For client-side routing, add a `vercel.json` file in the project root:
+
+```json
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+```
+
+This allows React Router to handle application routes when users directly open or refresh a page.
+
+### Continuous Deployment
+
+Vercel can automatically redeploy the application when new changes are pushed to the connected GitHub repository.
+
+For production deployments, ensure that:
+
+- The correct production API URL is configured.
+- Backend CORS allows the deployed frontend domain.
+- The application builds successfully.
+- Protected routes and authentication work correctly.
+- The application is served over HTTPS.
+
+**Important:** This repository contains the frontend. The backend API must be hosted and accessible separately.
+
+---
+
+## 🤖 AI-Assisted Development
+
+KitabiKeeda was developed with assistance from modern AI-powered development tools.
+
+### Devin AI
+
+Used to assist with larger implementation tasks, exploring the existing application, frontend redesign requirements, and refining features across the public website and LMS.
+
+### GitHub Copilot
+
+Used for code suggestions, component development, styling improvements, and documentation assistance.
+
+AI-generated suggestions and code were reviewed, tested, and integrated as part of the development process.
+
+AI tools assisted with development; they do not replace project authorship, review, or responsibility for the final implementation.
+
+---
+
+## ⚠️ Known Limitations
+
+The following limitations depend on the current frontend and backend integration:
+
+1. **Checkout:** The course details interface currently reports that checkout is unavailable. Having payment-related API methods does not automatically configure a payment provider or complete the checkout workflow.
+
+2. **Instructor Image Upload:** Instructor course image upload is not exposed as a supported workflow in the current integration.
+
+3. **Course Publishing:** The instructor workflow supports draft creation, editing, lesson creation, and submission for review. Direct publishing is not exposed as a supported instructor workflow.
+
+4. **Incomplete Backend Data:** Some purchase and order amounts or statuses may not be returned by the backend. The frontend does not fabricate missing information.
+
+5. **Backend Dependencies:** LMS analytics, course information, and administrative data depend on backend availability and the permissions of the authenticated user.
+
+---
+
+## 🤝 Contributing
+
+Contributions and improvements are welcome.
+
+Follow these steps when working on the project:
 
 1. Create a feature branch.
-2. Keep changes scoped to the requested feature and follow the existing component, API, routing, and CSS conventions.
-3. Preserve API contracts, authorization checks, and the separation between `/courses` and `/marketplace`.
-4. Run the relevant checks before opening a pull request:
+2. Keep changes focused on the requested functionality.
+3. Follow the existing component, API, routing, and CSS conventions.
+4. Preserve backend API contracts and authorization checks.
+5. Maintain the separation between the public course catalog and LMS Marketplace.
+6. Run the available checks before submitting changes.
 
-   ```bash
-   npm run lint
-   npm run build
-   ```
+```bash
+npm run lint
+npm run build
+```
 
-5. In your pull request description, summarize behavior changes, note API dependencies, and include screenshots for visible UI changes where useful.
+7. Include a clear description of the changes in your pull request.
+8. Add screenshots for significant UI changes where useful.
+
+---
+
+## 👨‍💻 Developer
+
+**Vivek Prajapathi**
+
+- GitHub: [@Vivek-Prajapathi](https://github.com/Vivek-Prajapathi)
+- Repository: [KitabiKeeda – Frontend](https://github.com/Vivek-Prajapathi/KitabiKeeda-Frontend-using-AI)
+- Live Application: [KitabiKeeda](https://kitabi-keeda-frontend-using-ai-8yej.vercel.app/)
+
+---
+
+**📚 KitabiKeeda – Making Learning More Accessible.**
