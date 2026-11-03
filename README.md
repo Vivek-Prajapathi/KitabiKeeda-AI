@@ -1,6 +1,17 @@
 # 📚 KitabiKeeda – Online Learning Management Platform
 
-A modern, responsive Learning Management System (LMS) built with **React 19**, designed to connect students, instructors, and administrators through a unified learning ecosystem.
+## 🤖 AI-Assisted Development
+
+KitabiKeeda was developed with the assistance of AI-powered development tools. AI played an important role throughout the development process, supporting code generation, debugging, problem-solving, UI development, architecture discussions, and implementation of application features.
+
+The AI tools used during development include:
+
+- **GitHub Copilot** – Code suggestions, implementation assistance, and productivity.
+- **Claude** – Problem-solving, code analysis, and development guidance.
+- **ChatGPT** – Concept explanations, debugging, code generation, and technical guidance.
+- **Devin AI** – AI-assisted software development, implementation support, and task execution.
+
+**Transparency Note:** This project is an AI-assisted development project. The tools listed above supported the development process; the resulting code, features, and application were reviewed, tested, and integrated as part of the project.
 
 🌐 **Live Demo:** https://kitabi-keeda-frontend-using-ai-8yej.vercel.app/
 
